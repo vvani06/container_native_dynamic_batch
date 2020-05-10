@@ -7,3 +7,5 @@ COPY backend/Gemfile.lock /app/
 WORKDIR /app
 RUN bundle install
 
+COPY backend/ /app/
+

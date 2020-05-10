@@ -1,0 +1,14 @@
+version: 1
+task_definition:
+  ecs_network_mode: awsvpc
+  task_execution_role: ecsTaskExecutionRole
+
+run_params:
+  network_configuration:
+    awsvpc_configuration:
+      subnets:
+        - subnet-02c4235b910079060
+        - subnet-09961c10c6015212e
+      security_groups:
+        - sg-0541f9f41c10ef9c9
+      assign_public_ip: ENABLED

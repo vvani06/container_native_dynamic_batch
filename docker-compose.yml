@@ -1,14 +1,13 @@
-version: '3.7'
+version: '3'
 
 services:
   backend_api:
     build: .
-    image: ${CONTAINER_NAMESPACE}:backend_api_${CONTAINER_VERSION}
-    volumes:
-      - ./backend:/app
+    image: ${CONTAINER_NAMESPACE}/backend:${CONTAINER_VERSION}
     ports: 
       - 3000
     env_file: .env
+    command: rails s -b 0.0.0.0
   database:
     image: postgres:12-alpine
     ports:
