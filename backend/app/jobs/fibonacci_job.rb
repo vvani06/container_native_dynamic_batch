@@ -2,6 +2,8 @@ class FibonacciJob < ApplicationJob
   queue_as :default
 
   def perform(fibonacci_index)
+    @fibonacci_array = []
+    
     return fibonacci(fibonacci_index)
   end
 
