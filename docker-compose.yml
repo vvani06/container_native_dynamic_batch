@@ -8,6 +8,11 @@ services:
       - 3000
     env_file: .env
     command: rails s -b 0.0.0.0
+  backend_worker:
+    build: .
+    image: ${CONTAINER_NAMESPACE}/backend:${CONTAINER_VERSION}
+    env_file: .env
+    command: bundle exec sidekiq -C config/sidekiq.yml
   database:
     image: postgres:12-alpine
     ports:
@@ -15,3 +20,7 @@ services:
     environment:
       POSTGRES_PASSWORD: ${DATABASE_PASSWORD}
       POSTGRES_USER: ${DATABASE_USER}
+  redis:
+    image: redis:6.0-alpine
+    ports:
+      - 6379
