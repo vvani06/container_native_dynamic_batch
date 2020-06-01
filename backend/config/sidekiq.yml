@@ -1,0 +1,6 @@
+:verbose: false
+:logfile: ./log/sidekiq.log
+:concurrency: 50
+:queues:
+  - default
+  - test

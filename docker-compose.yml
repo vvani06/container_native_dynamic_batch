@@ -1,0 +1,26 @@
+version: '3'
+
+services:
+  batch.scheduler:
+    build: .
+    image: ${CONTAINER_NAMESPACE}/backend:${CONTAINER_VERSION}
+    ports: 
+      - 3000
+    env_file: .env
+    command: rails runner 'Schedule::WatchAndRun.new.exec'
+  batch.worker:
+    build: .
+    image: ${CONTAINER_NAMESPACE}/backend:${CONTAINER_VERSION}
+    env_file: .env
+    command: bundle exec sidekiq -C config/sidekiq.yml
+  database:
+    image: postgres:12-alpine
+    ports:
+      - 5432
+    environment:
+      POSTGRES_PASSWORD: ${DATABASE_PASSWORD}
+      POSTGRES_USER: ${DATABASE_USER}
+  redis:
+    image: redis:6.0-alpine
+    ports:
+      - 6379
