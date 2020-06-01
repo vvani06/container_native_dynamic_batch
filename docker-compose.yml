@@ -1,14 +1,14 @@
 version: '3'
 
 services:
-  backend_api:
+  batch.scheduler:
     build: .
     image: ${CONTAINER_NAMESPACE}/backend:${CONTAINER_VERSION}
     ports: 
       - 3000
     env_file: .env
-    command: rails s -b 0.0.0.0
-  backend_worker:
+    command: rails runner 'Schedule::WatchAndRun.new.exec'
+  batch.worker:
     build: .
     image: ${CONTAINER_NAMESPACE}/backend:${CONTAINER_VERSION}
     env_file: .env
