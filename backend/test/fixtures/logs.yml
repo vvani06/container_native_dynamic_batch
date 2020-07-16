@@ -1,0 +1,11 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  schedule: one
+  started_at: 2020-07-14 15:34:57
+  finished_at: 2020-07-14 15:34:57
+
+two:
+  schedule: two
+  started_at: 2020-07-14 15:34:57
+  finished_at: 2020-07-14 15:34:57

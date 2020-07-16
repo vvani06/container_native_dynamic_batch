@@ -28,7 +28,7 @@ class Schedule::RunEcsTask
   end
 
   def command(schedule)
-    return %W(bundle exec thor fibonacci:calc #{schedule.calc_index})
+    return %W(bundle exec thor sleep:sleep #{@schedule.id})
   end
 
   def create_client
@@ -73,7 +73,7 @@ class Schedule::RunEcsTask
         container_overrides: [
           {
             name: 'backend',
-            command: %W(bundle exec thor fibonacci:calc #{@schedule.calc_index})
+            command: []
           }
         ]
       }

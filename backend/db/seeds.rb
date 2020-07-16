@@ -6,13 +6,31 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-Schedule.create(name: "test_01", run_at: Time.new(2000, 01, 01, 22,  0, 0, '+09:00'), calc_index: 48)
-Schedule.create(name: "test_02", run_at: Time.new(2000, 01, 01, 22,  5, 0, '+09:00'), calc_index: 32)
-Schedule.create(name: "test_03", run_at: Time.new(2000, 01, 01, 21, 55, 0, '+09:00'), calc_index: 40)
-Schedule.create(name: "test_04", run_at: Time.new(2000, 01, 01, 22,  2, 0, '+09:00'), calc_index: 45)
-Schedule.create(name: "test_05", run_at: Time.new(2000, 01, 01, 22,  3, 0, '+09:00'), calc_index: 49)
-Schedule.create(name: "test_06", run_at: Time.new(2000, 01, 01, 05,  0, 0, '+09:00'), calc_index: 14)
-Schedule.create(name: "test_07", run_at: Time.new(2000, 01, 01, 05,  0, 0, '+09:00'), calc_index: 20)
-Schedule.create(name: "test_08", run_at: Time.new(2000, 01, 01, 05,  1, 0, '+09:00'), calc_index: 25)
-Schedule.create(name: "test_09", run_at: Time.new(2000, 01, 01, 05,  5, 0, '+09:00'), calc_index: 33)
-Schedule.create(name: "test_10", run_at: Time.new(2000, 01, 01, 05,  8, 0, '+09:00'), calc_index: 42)
+
+2.times do |i|
+  Schedule.create(name: "240min #{i}", run_at: Time.new(2000, 01, 01, 03, 00, 00, '+09:00'), calc_index: 240)
+end
+
+5.times do |i|
+  Schedule.create(name: "120min #{i}", run_at: Time.new(2000, 01, 01, 03, 00, 00, '+09:00'), calc_index: 120)
+end
+
+12.times do |i|
+  Schedule.create(name: "60min #{i}", run_at: Time.new(2000, 01, 01, 02 + i/6, i%6 * 10, 00, '+09:00'), calc_index: 60)
+end
+
+24.times do |i|
+  Schedule.create(name: "30min #{i}", run_at: Time.new(2000, 01, 01, 01 + i/6, i%6 * 10, 00, '+09:00'), calc_index: 30)
+end
+
+48.times do |i|
+  Schedule.create(name: "10min #{i}", run_at: Time.new(2000, 01, 01, i/2, i%2 * 30, 00, '+09:00'), calc_index: 10)
+end
+
+48.times do |i|
+  Schedule.create(name: "5min #{i}", run_at: Time.new(2000, 01, 01, i/2, i%2 * 30, 00, '+09:00'), calc_index: 5)
+end
+
+48.times do |i|
+  Schedule.create(name: "1min #{i}", run_at: Time.new(2000, 01, 01, i/2, i%2 * 30, 00, '+09:00'), calc_index: 1)
+end
